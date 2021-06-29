@@ -51,6 +51,9 @@ let storedOperator = null;
 updateDisplay();
 
 
+
+
+
 function operate(a, b, operator) {
 
     if (storedOperator === "/" && (+a === 0 || +b === 0)) {
@@ -60,13 +63,14 @@ function operate(a, b, operator) {
     }
     if (operator === null) {//null represents the equals operator
         switch (storedOperator) {
-            case "-": current = (subtraction(a, b).toFixed(8) * 1000) / 1000; break;
-            case "+": current = (addition(a, b).toFixed(8) * 1000) / 1000; break;
-            case "x": current = (multiplication(a, b).toFixed(8) * 1000) / 1000; break;
-            case "/": current = (division(a, b).toFixed(8) * 1000) / 1000; break;
-            case "%": current = (percent(a, b).toFixed(8) * 1000) / 1000;
+            case "-": current = `${(subtraction(a, b).toFixed(8) * 1000) / 1000}`; break;//store current in string so user can edit
+            case "+": current = `${(addition(a, b).toFixed(8) * 1000) / 1000}`; break;
+            case "x": current = `${(multiplication(a, b).toFixed(8) * 1000) / 1000}`; break;
+            case "/": current = `${(division(a, b).toFixed(8) * 1000) / 1000}`; break;
+            case "%": current = `${(percent(a, b).toFixed(8) * 1000) / 1000}`;
             case null: break;
         }
+     
         resetStoredNumber();
     } else {
         switch (storedOperator) {
@@ -77,6 +81,7 @@ function operate(a, b, operator) {
             case "%": stored = (percent(a, b).toFixed(8) * 1000) / 1000;
             case null: storeCurrentNumber(); break;//store the answer in current number after pressing equals so user may edit before continuing 
         }
+  
         resetCurrentNumber();
     }
     storedOperator = operator;
