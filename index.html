@@ -1,0 +1,148 @@
+<style>
+    
+    @import url('https://fonts.googleapis.com/css2?family=Numans&family=Spartan:wght@300&display=swap');
+
+    :root {
+        --number-key-background: skyblue;
+        --number-key-background-hover: navy;
+        --number-key-text: navy;
+        --number-key-text-hover: skyblue;
+        --calc-background-color:slategrey;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn {
+        text-align: right;
+        background-color: darkblue;
+        color: white;
+        font-family: 'Numans', sans-serif;
+        font-size: 24px;
+        border: 2px solid white;
+        border-radius: 6px;
+    }
+
+    .btn:hover {
+        background-color: black;
+    }
+
+    .numeric {
+        background-color: var(--number-key-background);
+        color: var(--number-key-text);
+        border: 5px outset var(--number-key-text);
+
+    }
+
+
+    .numeric:hover {
+        background-color: var(--number-key-background-hover);
+        color: var(--number-key-text-hover);
+        border: 5px solid var(--number-key-text-hover);
+
+    }
+
+    .numeric:active {
+        background-color: var(--number-key-text-hover);
+        color: var(--number-key-background-hover);
+        border: 5px inset var(--number-key-background-hover);
+
+    }
+
+    #screen-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #4ea96b;
+        color: black;
+        font-size: 35px;
+        font-family: 'Spartan', sans-serif;
+        padding: 5px;
+        border: 6px inset black;
+    }
+
+
+
+    #screen-display-stored,
+    #screen-display-operator {
+        display: flex;
+        align-items: flex-end;
+        font-size: .75rem;
+        width: 1fr;
+    }
+
+
+    #screen-display-stored {
+        display: flex;
+        align-items: flex-end;
+        width: 3fr;
+    }
+
+    #calculator-container {
+        display: grid;
+        justify-content: center;
+        background-color: var(--calc-background-color);
+        border: 10px outset var(--calc-background-color);
+        border-radius: 10px;
+        padding: 5px;
+
+    }
+
+    #numeric-controls-container {
+        display: grid;
+        height: 100%;
+        grid-template-columns: 75px 75px 75px 75px;
+        grid-template-rows: 60px 60px 60px 60px 60px;
+        grid-gap: 5px;
+        padding-top: 15px;
+
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div id="calculator-container">
+        <div id="screen-container">
+            <div style="display: flex; flex-direction: row;justify-content: space-between;">
+                <span id="screen-display-stored"></span>
+                <span id="screen-display-operator"> </span>
+            </div>
+            <span id="screen-display-current"></span>
+        </div>
+        <div id="numeric-controls-container">
+            <div class="btn all-clear"><span>AC</span></div>
+            <div class="btn clear-entry"><span>CE</span></div>
+            <div class="btn backspace"><span>DEL</span></div>
+            <div class="btn operator o-percent"><span>%</span></div>
+            <div class="btn numeric numeric7"><span>7</span></div>
+            <div class="btn numeric numeric8"><span>8</span></div>
+            <div class="btn numeric numeric9"><span>9</span></div>
+            <div class="btn operator o-divide"><span>/</span></div>
+            <div class="btn numeric numeric4"><span>4</span></div>
+            <div class="btn numeric numeric5"><span>5</span></div>
+            <div class="btn numeric numeric6"><span>6</span></div>
+            <div class="btn operator o-multiply"><span>x</span></div>
+            <div class="btn numeric numeric1"><span>1</span></div>
+            <div class="btn numeric numeric2"><span>2</span></div>
+            <div class="btn numeric numeric3"><span>3</span></div>
+            <div class="btn operator o-subtract"><span>-</span></div>
+            <div class="btn numeric numeric0"><span>0</span></div>
+            <div class="btn decimal"><span>.</span></div>
+            <div class="btn operator o-equals"><span>=</span></div>
+            <div class="btn operator o-add"><span>+</span></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
