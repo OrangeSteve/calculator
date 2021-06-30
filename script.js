@@ -70,7 +70,7 @@ function operate(a, b, operator) {
             case "%": current = `${(percent(a, b).toPrecision(12) * 1000) / 1000}`;
             case null: break;
         }
-     
+
         resetStoredNumber();
     } else {
         switch (storedOperator) {
@@ -81,7 +81,7 @@ function operate(a, b, operator) {
             case "%": stored = (percent(a, b).toPrecision(12) * 1000) / 1000;
             case null: storeCurrentNumber(); break;//store the answer in current number after pressing equals so user may edit before continuing 
         }
-  
+
         resetCurrentNumber();
     }
     storedOperator = operator;
@@ -145,11 +145,15 @@ function backspace() {
 function updateDisplay() {
     screenDisplayStored.textContent = `${+stored}`;
     storedOperator === null ? screenDisplayOperator.textContent = ` ` : screenDisplayOperator.textContent = storedOperator;
-    screenDisplayCurrent.textContent = `${+((+current * 1000) / 1000)}`;
-    if (current[current.length - 1] === `.`) {
-        screenDisplayCurrent.textContent += `.`;
+
+    let intDec = current.split(`.`, 2);
+    let displayString = `${+intDec[0]}`;
+    if (intDec.length === 2) {
+        displayString += `.${intDec[1]}`;
     }
+    screenDisplayCurrent.textContent = `${displayString}`;
 }
+
 
 function storeCurrentNumber() {
     stored = +current;
